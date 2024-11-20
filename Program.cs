@@ -5,6 +5,7 @@ namespace uebungDelegate
     // Delegatendefinition für das Guthaben-Event
     public delegate void GuthabenEventHandler(object sender, GuthabenEventArgs e);
 
+    //EventArgs
     public class GuthabenEventArgs : EventArgs 
     {
         public int Änderung { get; } 
@@ -47,10 +48,11 @@ namespace uebungDelegate
             get { return _wert; }
             set
             {
-                if (value != _wert)
+                if (value != 0)
                 {
                     // Auslösen des Abheben-Events, wenn sich der Wert ändert
                     Abheben?.Invoke(this, new GuthabenEventArgs(value));
+                  //Abheben = Event aus testKlasse, wird in Main von AbhebenMethode abonniert
                 }
                 _wert += value;
             }
